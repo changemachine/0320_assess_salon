@@ -1,4 +1,4 @@
-<php
+<?php
 
     class Stylist
     {
@@ -12,7 +12,7 @@
         }
 
     //------ GETTERS 'n SETTERS ------------------
-        
+
 
     //------ SAVERS 'n DELETERS ------------------
 
