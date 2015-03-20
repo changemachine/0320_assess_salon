@@ -3,8 +3,17 @@
         <title></title>
     </head>
     <body>
+        <div class='container'>
+            {% if clients is not empty %}
+            <h4>Hi here are some clients</h4>
 
-        {{ clients.getAll }}
+                {% for client in clients %}
+                    <p>{{ client.client_name }}</p>
+                {% endfor %}
+                {% else %} <h4>No Clients, Chuck.</h4>
+            {% endif %}
+        </div>
+
 
     </body>
 </html>
