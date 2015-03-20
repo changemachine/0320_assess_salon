@@ -21,23 +21,23 @@
             Client::deleteAll();
         }
 
-        // function test_save()
-        // {
-        //     //Arrange
-        //     $id = 1;
-        //     $client_name = "Sal";
-        //     /*$contact = 500-503-0000;
-        //     $stylist_id = 1;*/
-        //     $test_client = new Client($id, $client_name/*, $contact, $stylist_id*/);
-        //
-        //     //Act
-        //     $test_client->save();
-        //     $result = Client::getAll();
-        //
-        //     //Assert
-        //     $this->assertEquals($test_client, $result[0]);
-        //
-        // }
+        function test_save()
+        {
+            //Arrange
+            $id = 1;
+            $client_name = "Sal";
+            /*$contact = 500-503-0000;
+            $stylist_id = 1;*/
+            $test_client = new Client($id, $client_name/*, $contact, $stylist_id*/);
+
+            //Act
+            $test_client->save();
+            $result = Client::getAll();
+
+            //Assert
+            $this->assertEquals($test_client, $result[0]);
+
+        }
 
         function test_getAll(){
             //Arrange
