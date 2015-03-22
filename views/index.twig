@@ -3,18 +3,19 @@
         <title></title>
     </head>
     <body>
+
         <div class='container'>
         <form action='/new_client' method='post'>
-            <input id='client_name' name='client_name' type='text' value="client_name">
-            <input id='contact' type="tel" name='contact' value="503-400-0000">
+            <input name='client_name' type='text' value="client_name">
+            <input name='contact' type="tel"  value="503-400-0000">
             <!-- <input id='stylist_id' name='stylist_id' type='int' value="stylist_id"> -->
-            <button type='submit' class='btn-xs'>
+            <button type='submit'>Add Client</button>
         </form>
         </div>
 
         <div class='container'>
         <form action='/delete_clients' method='post'>
-            <button type='submit' class='btn-xs'>Delete All</button>
+            <button type='submit' class='btn btn-danger'>Delete All</button>
         </form>
         </div>
 
@@ -30,8 +31,7 @@
             <h4>Hi here are some clients</h4>
                 {% for client in clients %}
                     <p>{{ client.getName }}</p>
-                    <p>{{ client.getContact }}</p>
-
+                    <p>{{ client.contact }}</p>
                 {% endfor %}
                 {% else %} <h4>No Clients, Chuck.</h4>
             {% endif %}
