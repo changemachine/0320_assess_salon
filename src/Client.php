@@ -2,27 +2,20 @@
 
     class Client
     {
-        private $id;
         private $client_name;
-        /*private $contact;
-        private $stylist_id;
-*/
-        function __construct($id, $client_name/*, $contact, $stylist_id*/)
+        private $contact;
+
+        function __construct($client_name, $contact)
         {
-            $this->id = $id;
             $this->client_name = $client_name;
-            /*$this->contact = $contact;
-            $this->stylist_id = $stylist_id;*/
+            $this->contact = $contact;
         }
 
     //------ SETTERS 'n GETTERS ------------------
-            // ------- ID ----------------------
-        function setId($new_id){
-            $this->id = (int) $new_id;
-        }
-        function getId(){
-            return $this->id;
-        }
+            // ------- ID. ----------------------
+        function setId($new_id){ $this->id = (int) $new_id; }
+        function getId(){ return $this->id; }
+
             // ------- CLIENT_NAME ---------------------
         function setName($new_client_name){
             $this->client_name = (int) $new_client_name;
@@ -30,7 +23,15 @@
         function getName(){
             return $this->client_name;
         }
-/*            // ------- CONTACT/STYLIST SET-GET --------------------
+
+        // ------- CONTACT ---------------------
+        function setContact(){
+            $this->contact = (int) $new_contact;
+        }
+        function getContact(){
+            return $this->contact;
+        }
+/*            // -------GET/SET CONTACT / STYLIST_ID --------------------
         function setContact($new_contact)
         {
             $this->contact = (int) $new_contact;
@@ -51,9 +52,9 @@
 */
 
         function Save(){
-            $statement = $GLOBALS['DB']->query("INSERT INTO clients (client_name) VALUES ('{$this->getName()}') RETURNING id;");
-            $result = $statement->fetch(PDO::FETCH_ASSOC);
-            $this->setId($result['id']);
+            $statement = $GLOBALS['DB']->query("INSERT INTO clients (client_name, contact) VALUES ('{$this->getName()}', {$this->getContact()}) RETURNING id;");
+            $return_id = $statement->fetch(PDO::FETCH_ASSOC);
+            $this->setId($return_id['id']);
         }
 
         static function deleteAll(){
